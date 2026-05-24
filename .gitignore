@@ -1,0 +1,31 @@
+# Python files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environments
+.env
+.venv
+venv/
+ENV/
+
+# System and IDEs
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Docker files
+.docker/
+
+# Agent configuration
+.antigravitycli/
+scratch/
+task.md
+implementation_plan.md
+walkthrough.md
+*.log

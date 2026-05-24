@@ -1,0 +1,25 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      - REDIS_HOST=redis
+      - FLASK_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--spider", "http://127.0.0.1:5000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+  redis:
+    image: redis:alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
